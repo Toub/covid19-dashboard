@@ -74,6 +74,7 @@ const MainPage = ({data, dates, isGouv}) => {
   const [departementsReport, setDepartementsReport] = useState({})
   const [previousDepartementsReport, setPreviousDepartementsReport] = useState({})
   const [viewport, setViewport] = useState(defaultViewport)
+  const [selectedMapIdx, setSelectedMapIdx] = useState(1)
 
   const dateIdx = indexOf(dates, date)
   const previousDate = dates[dateIdx - 1]
@@ -274,6 +275,8 @@ const MainPage = ({data, dates, isGouv}) => {
           next: dateIdx < dates.length - 1 ? nextReport : null,
           setViewport,
           maps,
+          selectedMapIdx,
+          setSelectedMapIdx,
           viewport,
           isIframe,
           isMobileDevice,
