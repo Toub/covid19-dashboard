@@ -54,7 +54,7 @@ const reportToGeoJSON = (report, date) => {
 const defaultViewport = {
   latitude: 46.9,
   longitude: 1.7,
-  zoom: 5
+  zoom: 4.5
 }
 
 const MainPage = ({data, dates, isGouv}) => {
@@ -159,7 +159,7 @@ const MainPage = ({data, dates, isGouv}) => {
     setViewport({
       latitude,
       longitude,
-      zoom: isMobileDevice ? 4.3 : 5
+      zoom: isMobileDevice ? 4.3 : defaultViewport.zoom
     })
   }, [isMobileDevice]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -278,6 +278,7 @@ const MainPage = ({data, dates, isGouv}) => {
           previousFranceReport,
           regionsReport,
           departementsReport,
+          getDROMReport,
           prev: dateIdx > 0 ? previousReport : null,
           next: dateIdx < dates.length - 1 ? nextReport : null,
           setViewport,
