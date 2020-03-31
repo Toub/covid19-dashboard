@@ -1,5 +1,4 @@
 import React, {useContext} from 'react'
-
 import {AppContext} from '../pages'
 
 import DateNav from '../components/date-nav'
@@ -7,9 +6,12 @@ import Scrollable from '../components/scrollable'
 import ReactMapGl from '../components/react-map-gl'
 import Statistics from '../components/statistics'
 import Informations from '../components/informations'
+import Drom from '../components/react-map-gl/drom'
 import Footer from '../components/footer'
 
 import colors from '../styles/colors'
+
+const STATIC_MAP_HEIGHT = 200
 
 const DISABLE_FOOTER = process.env.DISABLE_FOOTER === '1'
 
@@ -29,7 +31,12 @@ const ScreenPage = () => {
       </div>
 
       <div className='map'>
-        <ReactMapGl />
+        <div className='metropole'>
+          <ReactMapGl />
+        </div>
+        <div className='drom-container'>
+          <Drom />
+        </div>
       </div>
 
       <style jsx>{`
@@ -44,6 +51,34 @@ const ScreenPage = () => {
       .map {
         flex: 1;
         height: 100%;
+      }
+
+      .metropole {
+        height: calc(100% - ${STATIC_MAP_HEIGHT}px);
+      }
+
+      .drom-container {
+        padding: 0.5em;
+        height: ${STATIC_MAP_HEIGHT}px;
+      }
+
+      @media (max-width: 1250px) {
+        .metropole {
+          height: calc(100% - (${STATIC_MAP_HEIGHT}px * 2));
+        }
+
+        .drom-container {
+          height: ${STATIC_MAP_HEIGHT * 2}px;
+        }
+      }
+
+      @media (max-width: 955px) {
+        .drom-container {
+          height: 50%;
+        }
+        .metropole {
+          height: 50%;
+        }
       }
     `}</style>
     </>

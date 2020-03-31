@@ -135,6 +135,13 @@ const MainPage = ({data, dates, isGouv}) => {
     return {...feature.properties}
   }, [previousRegionsReport, previousDepartementsReport])
 
+  const getDROMReport = code => {
+    const items = data.filter((item => item.code === code))
+    const byCode = groupBy(items, 'code')
+
+    return reportToGeoJSON(byCode, date)
+  }
+
   useEffect(() => {
     if (selectedLocation) {
       const locationReport = getLocationReport(selectedLocation)
