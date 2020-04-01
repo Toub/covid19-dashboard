@@ -157,7 +157,7 @@ const MainPage = ({data, dates, isGouv}) => {
 
     const previousDepartementsReport = reportToGeoJSON(getReport(previousDate, 'DEP'), date)
     setPreviousDepartementsReport(previousDepartementsReport)
-  }, [date, dates, dateIdx, getReport])
+  }, [date, dates, dateIdx, previousDate, getReport])
 
   useEffect(() => {
     const mobileWidth = parseInt(theme.mobileDisplay.split('px')[0])
